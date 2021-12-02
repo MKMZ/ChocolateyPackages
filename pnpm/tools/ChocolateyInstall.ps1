@@ -5,7 +5,7 @@ $packagePnpmVersion = [version]([regex]'^\d+(\.\d+){2}').Match($Env:chocolateyPa
 $npmCommand = Get-Command -Name npm -ErrorAction SilentlyContinue
 if ($null -eq $npmCommand) 
 {
-    throw "Required dependency not found: npm"
+    throw "Required dependency not found: npm. You may use the 'nodejs-lts' or 'nodejs' packages to install Node with NPM."
 }
 
 $pnpmCommand = Get-Command -Name pnpm -ErrorAction SilentlyContinue
