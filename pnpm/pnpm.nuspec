@@ -48,8 +48,5 @@
     <releaseNotes>
         [pnpm release notes](https://github.com/pnpm/pnpm/releases)
     </releaseNotes>
-    <dependencies>
-      <dependency id="chocolatey" version="0.11.3" />
-    </dependencies>
   </metadata>
 </package>
