@@ -9,21 +9,27 @@ if ($null -eq $npmCommand)
 }
 
 $pnpmCommand = Get-Command -Name pnpm -ErrorAction SilentlyContinue
-if ($null -ne $pnpmCommand) 
+if ($null -ne $pnpmCommand -and (-not $env:ChocolateyForce))
 {
     $currentPnpmVersion = [version](pnpm --version)
     if ($packagePnpmVersion -le $currentPnpmVersion)
     {
-        Write-Host "pnpm package version '$packagePnpmVersion' is lower or equal current version '$currentPnpmVersion'"
+        Write-Host "This pnpm package version '$packagePnpmVersion' is lower or equal to currently installed pnpm version '$currentPnpmVersion'. Use the --force switch to install version $packagePnpmVersion anyway."
         return
     }
 }
 
 $packagePnpmFullName = "pnpm@$packagePnpmVersion"
+$packageInstallArgs = @('install', $packagePnpmFullName, '-g')
+if ($env:ChocolateyForce)
+{
+    $packageInstallArgs += '-f'
+}
+
 $packageArgs = @{
     packageName   = $Env:chocolateyPackageName
     file          = $npmCommand.Path
     fileType      = 'exe'
-    silentArgs    = @('install', '-g', $packagePnpmFullName)
+    silentArgs    = $packageInstallArgs
 }
 Install-ChocolateyInstallPackage @packageArgs

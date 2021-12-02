@@ -6,7 +6,7 @@
     <packageSourceUrl>https://github.com/MKMZ/ChocolateyPackages/tree/main/pnpm</packageSourceUrl>
     <owners>MKMZ</owners>
     <title>pnpm</title>
-    <authors>Contributors of pNPm</authors>
+    <authors>Contributors of pnpm</authors>
     <projectUrl>https://pnpm.io/</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/MKMZ/ChocolateyPackages/26ccbb17b8a53910699ba8d9b83592ab8eaab7e2/icons/pnpm.png</iconUrl>
     <licenseUrl>https://github.com/pnpm/pnpm/blob/3a0c77de6e09b317f1fff40099e72f5de85a27a6/LICENSE</licenseUrl>

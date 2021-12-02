@@ -7,16 +7,22 @@ if ($null -eq $npmCommand)
 }
 
 $pnpmCommand = Get-Command -Name pnpm -ErrorAction SilentlyContinue
-if ($null -eq $pnpmCommand) 
+if ($null -eq $pnpmCommand -and (-not $env:ChocolateyForce))
 {
-    Write-Warning "pnpm package is already uninstalled"
+    Write-Warning "This pnpm package is already uninstalled. Use the --force switch to try to uninstall anyway."
     return
+}
+
+$packageUninstallArgs = @('uninstall', 'pnpm', '-g')
+if ($env:ChocolateyForce)
+{
+    $packageUninstallArgs += '-f'
 }
 
 $packageArgs = @{
     packageName   = $Env:chocolateyPackageName
     file          = $npmCommand.Path
     fileType      = 'exe'
-    silentArgs    = @('uninstall', '-g', 'pnpm')
+    silentArgs    = $packageUninstallArgs
 }
 Uninstall-ChocolateyPackage @packageArgs
