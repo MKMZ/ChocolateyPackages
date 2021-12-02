@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>pnpm</id>
+    <version>6.23.1</version>
+    <packageSourceUrl>https://github.com/MKMZ/ChocolateyPackages/tree/main/pnpm</packageSourceUrl>
+    <owners>MKMZ</owners>
+    <title>pnpm</title>
+    <authors>Contributors of pNPm</authors>
+    <projectUrl>https://pnpm.io/</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/MKMZ/ChocolateyPackages/26ccbb17b8a53910699ba8d9b83592ab8eaab7e2/icons/pnpm.png</iconUrl>
+    <licenseUrl>https://github.com/pnpm/pnpm/blob/3a0c77de6e09b317f1fff40099e72f5de85a27a6/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <docsUrl>https://pnpm.io/motivation</docsUrl>
+    <bugTrackerUrl>https://github.com/pnpm/pnpm/issues</bugTrackerUrl>
+    <tags>pnpm node npm</tags>
+    <summary>Fast, disk space efficient package manager for Node-based projects.</summary>
+    <description>
+        Fast, disk space efficient package manager for Node-based projects.
+    </description>
+    <releaseNotes>
+        [pnpm release notes](https://github.com/pnpm/pnpm/releases)
+    </releaseNotes>
+    <dependencies>
+      <dependency id="chocolatey" version="0.11.3" />
+    </dependencies>
+  </metadata>
+</package>
