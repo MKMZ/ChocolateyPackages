@@ -1,14 +1,13 @@
 $ErrorActionPreference = 'Stop'
 
+$packageName = $Env:chocolateyPackageName
 $packagePnpmVersion = [version]([regex]'^\d+(\.\d+){2}').Match($Env:chocolateyPackageVersion).Value
 
-$npmCommand = Get-Command -Name npm.cmd -ErrorAction SilentlyContinue
-if ($null -eq $npmCommand) 
-{
-    throw "Required dependency not found: npm. You may use the 'nodejs-lts' or 'nodejs' packages to install Node with NPM."
-}
+$architecture = 'x64'
+$platform = 'win'
+$pnpmExecutableFileName = "$packageName.exe"
 
-$pnpmCommand = Get-Command -Name pnpm -ErrorAction SilentlyContinue
+$pnpmCommand = Get-Command -Name $packageName -ErrorAction SilentlyContinue
 if ($null -ne $pnpmCommand -and (-not $env:ChocolateyForce))
 {
     $currentPnpmVersion = [version](pnpm --version)
@@ -19,17 +18,16 @@ if ($null -ne $pnpmCommand -and (-not $env:ChocolateyForce))
     }
 }
 
-$packagePnpmFullName = "pnpm@$packagePnpmVersion"
-$packageInstallArgs = @('install', $packagePnpmFullName, '-g')
-if ($env:ChocolateyForce)
-{
-    $packageInstallArgs += '-f'
+if ([System.Environment]::Is64BitOperatingSystem -eq $false) {
+	Write-Error "pnpm currently only provides binaries for x64 architectures on Windows are available. Try to install pnpm using npm."
+	return
 }
 
-$packageArgs = @{
-    packageName   = $Env:chocolateyPackageName
-    file          = $npmCommand.Path
-    fileType      = 'exe'
-    silentArgs    = $packageInstallArgs
+$pnpmExecutablePath = "$PSScriptRoot\$pnpmExecutableFileName"
+$pnpmExecutableUrl = "https://github.com/pnpm/pnpm/releases/download/v$packagePnpmVersion/pnpm-$platform-$architecture.exe"
+$packageWebFileArgs = @{
+    packageName     = $packageName
+    fileFullPath    = $pnpmExecutablePath
+    url             = $pnpmExecutableUrl
 }
-Install-ChocolateyInstallPackage @packageArgs
+Get-ChocolateyWebFile @packageWebFileArgs

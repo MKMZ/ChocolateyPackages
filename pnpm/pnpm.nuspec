@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>pnpm</id>
-    <version>6.23.1</version>
+    <version>6.23.6</version>
     <packageSourceUrl>https://github.com/MKMZ/ChocolateyPackages/tree/main/pnpm</packageSourceUrl>
     <owners>MKMZ</owners>
     <title>pnpm</title>
@@ -39,11 +39,6 @@ why it works fine with the Node.js ecosystem, read this small article: [Flat nod
 - [Frequently Asked Questions](https://pnpm.io/faq)
 - [Chat](https://r.pnpm.io/chat)
 - [Twitter](https://twitter.com/pnpmjs)
-
-**Required Dependencies**
-
-- [NodeJS](https://nodejs.org/)
-- [NPM](https://www.npmjs.com/)
     </description>
     <releaseNotes>
         [pnpm release notes](https://github.com/pnpm/pnpm/releases)
