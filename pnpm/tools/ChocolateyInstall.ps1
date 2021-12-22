@@ -2,6 +2,7 @@ $ErrorActionPreference = 'Stop'
 
 $packageName = $Env:chocolateyPackageName
 $packagePnpmVersion = [version]([regex]'^\d+(\.\d+){2}').Match($Env:chocolateyPackageVersion).Value
+$scriptRoot = Split-Path -parent $MyInvocation.MyCommand.Definition
 
 $architecture = 'x64'
 $platform = 'win'
@@ -23,11 +24,13 @@ if ([System.Environment]::Is64BitOperatingSystem -eq $false) {
 	return
 }
 
-$pnpmExecutablePath = "$PSScriptRoot\$pnpmExecutableFileName"
+$pnpmExecutablePath = "$scriptRoot\$pnpmExecutableFileName"
 $pnpmExecutableUrl = "https://github.com/pnpm/pnpm/releases/download/v$packagePnpmVersion/pnpm-$platform-$architecture.exe"
 $packageWebFileArgs = @{
     packageName     = $packageName
     fileFullPath    = $pnpmExecutablePath
     url             = $pnpmExecutableUrl
+    checksumType    = 'sha1'
+    checksum        = 'ed5ab22fb1d89a091ec7aaaf3dfc9e66f8c79368'
 }
 Get-ChocolateyWebFile @packageWebFileArgs
