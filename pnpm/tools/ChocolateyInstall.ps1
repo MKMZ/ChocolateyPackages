@@ -31,6 +31,6 @@ $packageWebFileArgs = @{
     fileFullPath    = $pnpmExecutablePath
     url             = $pnpmExecutableUrl
     checksumType    = 'sha1'
-    checksum        = '18107C79AF472A791D6CF6BEA849F2F55980E77B'
+    checksum        = 'E813E328BDABEC3F2AD982273B5926E508307E7E'
 }
 Get-ChocolateyWebFile @packageWebFileArgs
