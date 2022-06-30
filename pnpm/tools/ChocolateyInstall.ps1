@@ -25,12 +25,12 @@ if ([System.Environment]::Is64BitOperatingSystem -eq $false) {
 }
 
 $pnpmExecutablePath = "$scriptRoot\$pnpmExecutableFileName"
-$pnpmExecutableUrl = "https://github.com/pnpm/pnpm/releases/download/v$packagePnpmVersion-0/pnpm-$platform-$architecture.exe"
+$pnpmExecutableUrl = "https://github.com/pnpm/pnpm/releases/download/v$packagePnpmVersion/pnpm-$platform-$architecture.exe"
 $packageWebFileArgs = @{
     packageName     = $packageName
     fileFullPath    = $pnpmExecutablePath
     url             = $pnpmExecutableUrl
     checksumType    = 'sha1'
-    checksum        = '4B2730C15D20A29D90946A63F55F8AD94D7E3E45'
+    checksum        = 'FF2E9F96348C7315ABF09DC28B12F92613752F85'
 }
 Get-ChocolateyWebFile @packageWebFileArgs
