@@ -1,4 +1,4 @@
-Install-Module AU
+Install-Module AU -Force
 
 $Options = [ordered]@{
     WhatIf        = $au_WhatIf
