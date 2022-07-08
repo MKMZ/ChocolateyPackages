@@ -1,4 +1,4 @@
-$ErrorActionPreference = 'Stop'
+﻿$ErrorActionPreference = 'Stop'
 
 $packageName = $Env:chocolateyPackageName
 $packagePnpmVersion = [version]([regex]'^\d+(\.\d+){2}').Match($Env:chocolateyPackageVersion).Value
@@ -31,6 +31,6 @@ $packageWebFileArgs = @{
     fileFullPath    = $pnpmExecutablePath
     url             = $pnpmExecutableUrl
     checksumType    = 'sha1'
-    checksum        = 'FF2E9F96348C7315ABF09DC28B12F92613752F85'
+    checksum        = '86cdb0ea09ed00822b3b5b6689d5fab9cba6ebec'
 }
 Get-ChocolateyWebFile @packageWebFileArgs
