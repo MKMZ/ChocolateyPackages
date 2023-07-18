@@ -11,7 +11,14 @@ $pnpmExecutableFileName = "$packageName.exe"
 $pnpmCommand = Get-Command -Name $packageName -ErrorAction SilentlyContinue
 if ($null -ne $pnpmCommand -and (-not $env:ChocolateyForce))
 {
-    $currentPnpmVersion = [version](pnpm --version)
+    $currentPnpmVersionString = pnpm --version
+    $currentPnpmVersion = [version]::new()
+    $isValidCurrentVersion = [version]::TryParse($currentPnpmVersionString, [ref]$currentPnpmVersion)
+    if (-not $isValidCurrentVersion)
+    {
+        Write-Error $"Invalid current version of pnpm detected: ""$currentPnpmVersionString""."
+	    return
+    }
     if ($packagePnpmVersion -le $currentPnpmVersion)
     {
         Write-Host "This pnpm package version '$packagePnpmVersion' is lower or equal to currently installed pnpm version '$currentPnpmVersion'. Use the --force switch to install version $packagePnpmVersion anyway."
@@ -31,6 +38,6 @@ $packageWebFileArgs = @{
     fileFullPath    = $pnpmExecutablePath
     url             = $pnpmExecutableUrl
     checksumType    = 'sha1'
-    checksum        = '86cdb0ea09ed00822b3b5b6689d5fab9cba6ebec'
+    checksum        = '88F54A7DF7A01719E06CFA299A1700966574EE51'
 }
 Get-ChocolateyWebFile @packageWebFileArgs
