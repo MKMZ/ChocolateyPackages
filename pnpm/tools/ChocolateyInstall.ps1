@@ -16,8 +16,8 @@ if ($null -ne $pnpmCommand -and (-not $env:ChocolateyForce))
     $isValidCurrentVersion = [version]::TryParse($currentPnpmVersionString, [ref]$currentPnpmVersion)
     if (-not $isValidCurrentVersion)
     {
-        Write-Error $"Invalid current version of pnpm detected: ""$currentPnpmVersionString""."
-	    return
+        Write-Error "Invalid current version of pnpm detected: ""$currentPnpmVersionString""."
+        return
     }
     if ($packagePnpmVersion -le $currentPnpmVersion)
     {
