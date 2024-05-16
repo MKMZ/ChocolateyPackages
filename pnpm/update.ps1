@@ -1,4 +1,4 @@
-Import-Module AU
+Install-Module chocolatey-au
 
 $latestRelease = "https://api.github.com/repos/pnpm/pnpm/releases/latest"
 
