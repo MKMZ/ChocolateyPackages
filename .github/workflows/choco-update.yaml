@@ -15,11 +15,11 @@ jobs:
       - uses: actions/checkout@v3
       
       - name: Authenticate to Chocolatey
-        uses: Amadevus/pwsh-script@v2.0.1
+        uses: Amadevus/pwsh-script@v2.0.3
         with:
           script: choco apikey --key ${{secrets.CHOCO_API_KEY}} --source https://push.chocolatey.org/
       
       - name: Update packages
-        uses: Amadevus/pwsh-script@v2.0.1
+        uses: Amadevus/pwsh-script@v2.0.3
         with:
           script: .\update_all.ps1 -Verbose
