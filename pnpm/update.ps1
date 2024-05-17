@@ -1,7 +1,7 @@
 $VerbosePreference = 'Continue'
 $DebugPreference = 'Continue'
 
-Install-Module chocolatey-au -Force
+Install-Module chocolatey-au
 
 $latestRelease = "https://api.github.com/repos/pnpm/pnpm/releases/latest"
 

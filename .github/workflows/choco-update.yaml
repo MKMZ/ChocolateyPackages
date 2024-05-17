@@ -22,4 +22,4 @@ jobs:
       - name: Update packages
         uses: Amadevus/pwsh-script@v2.0.3
         with:
-          script: .\pnpm\update.ps1 -Verbose
+          script: .\update.ps1 -Verbose
