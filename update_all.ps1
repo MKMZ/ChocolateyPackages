@@ -1,3 +1,6 @@
+$VerbosePreference = 'Continue'
+$DebugPreference = 'Continue'
+
 Install-Module chocolatey-au -Force
 
 $Options = [ordered]@{
