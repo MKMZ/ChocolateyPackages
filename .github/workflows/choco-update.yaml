@@ -19,14 +19,10 @@ jobs:
         with:
           script: choco apikey --key ${{secrets.CHOCO_API_KEY}} --source https://push.chocolatey.org/
       
-      - name: Prepare pnpm package
+      - name: Update packages
         uses: Amadevus/pwsh-script@v2.0.3
         with:
           script: |
             cd ./pnpm
             .\update.ps1 -Verbose
-
-      - name: Update packages
-        uses: Amadevus/pwsh-script@v2.0.3
-        with:
-          script: .\update_all.ps1 -Verbose
+            choco push --source=https://push.chocolatey.org/
