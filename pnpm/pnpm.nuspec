@@ -32,7 +32,7 @@ As a result, you save gigabytes of space on your disk and you have a lot faster 
 If you'd like more details about the unique `node_modules` structure that pnpm creates and
 why it works fine with the Node.js ecosystem, read this small article: [Flat node_modules is not the only way](https://pnpm.io/blog/2020/05/27/flat-node-modules-is-not-the-only-way).
 
-## Getting Started
+**Getting Started**
 
 - [Installation](https://pnpm.io/installation)
 - [Usage](https://pnpm.io/pnpm-cli)
@@ -41,7 +41,7 @@ why it works fine with the Node.js ecosystem, read this small article: [Flat nod
 - [X](https://x.com/pnpmjs)
 - [Bluesky](https://bsky.app/profile/pnpm.io)
 
-## Benchmark
+**Benchmark**
 
 pnpm is up to 2x faster than npm and Yarn classic. See all benchmarks [here](https://r.pnpm.io/benchmarks).
 
@@ -49,7 +49,7 @@ Benchmarks on an app with lots of dependencies:
 
 ![](https://pnpm.io/img/benchmarks/alotta-files.svg)
 
-## License
+**License**
 
 [MIT](https://github.com/pnpm/pnpm/blob/main/LICENSE)
     </description>
