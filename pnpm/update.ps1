@@ -6,7 +6,7 @@ Install-Module chocolatey-au -Force
 $latestRelease = "https://api.github.com/repos/pnpm/pnpm/releases/latest"
 
 function global:au_BeforeUpdate {
-    $Latest.Checksum = Get-RemoteChecksum $Latest.URL -Algorithm sha1
+    $Latest.Checksum = Get-RemoteChecksum $Latest.URL -Algorithm sha256
 }
 
 function global:au_SearchReplace {
