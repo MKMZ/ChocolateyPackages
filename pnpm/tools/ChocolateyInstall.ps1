@@ -5,7 +5,7 @@ $packagePnpmVersion = [version]([regex]'^\d+(\.\d+){2}').Match($Env:chocolateyPa
 $scriptRoot = Split-Path -parent $MyInvocation.MyCommand.Definition
 
 $architecture = 'x64'
-$platform = 'win'
+$platform = 'win32'
 $pnpmExecutableFileName = "$packageName.exe"
 
 if ([System.Environment]::Is64BitOperatingSystem -eq $false) {
@@ -13,13 +13,12 @@ if ([System.Environment]::Is64BitOperatingSystem -eq $false) {
 	return
 }
 
-$pnpmExecutablePath = "$scriptRoot\$pnpmExecutableFileName"
-$pnpmExecutableUrl = "https://github.com/pnpm/pnpm/releases/download/v$packagePnpmVersion/pnpm-$platform-$architecture.exe"
-$packageWebFileArgs = @{
-    packageName     = $packageName
-    fileFullPath    = $pnpmExecutablePath
-    url             = $pnpmExecutableUrl
-    checksumType    = 'sha256'
-    checksum        = '88F54A7DF7A01719E06CFA299A1700966574EE51'
+$pnpmZipUrl = "https://github.com/pnpm/pnpm/releases/download/v$packagePnpmVersion/pnpm-$platform-$architecture.zip"
+$packageArgs = @{
+    packageName   = $packageName
+    url           = $pnpmZipUrl
+    unzipLocation = $scriptRoot
+    checksumType  = 'sha256'
+    checksum      = '82C130717A59F237C49E8EAA8A7ED75C1D8D351A5B6DEDEEE3196B8E1B597C6E'
 }
-Get-ChocolateyWebFile @packageWebFileArgs
+Install-ChocolateyZipPackage @packageArgs

@@ -20,7 +20,7 @@ function global:au_SearchReplace {
 function global:au_GetLatest {
     $packageJson = Invoke-WebRequest -UseBasicParsing -Uri $latestRelease | ConvertFrom-Json
     $packageVersion = $packageJson.tag_name -Replace "^v"
-    $packageAsset = $packageJson.assets | Where-Object { $_.name -eq "pnpm-win-x64.exe" }
+    $packageAsset = $packageJson.assets | Where-Object { $_.name -eq "pnpm-win32-x64.zip" }
 
     @{
         Version       = $packageVersion
